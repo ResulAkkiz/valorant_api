@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Pages/AgentHomePage.dart';
-import 'package:valorant_api/Pages/WeaponHomePage.dart';
+import 'package:valorant_api/Pages/agent_home_page.dart';
+import 'package:valorant_api/Pages/weapon_home_page.dart';
 import 'package:valorant_api/UI_Helper/ui_helper.dart';
 
 class HomePage extends StatefulWidget {
@@ -12,9 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int _selectedIndex = 0;
-  static const TextStyle optionStyle =
-      TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
-  static final List<Widget> _widgetOptions = <Widget>[
+  final List<Widget> _widgetOptions = <Widget>[
     const AgentHomePage(),
     const WeaponHomePage()
   ];

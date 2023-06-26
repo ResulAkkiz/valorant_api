@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Pages/HomePage.dart';
+import 'package:valorant_api/Pages/home_page.dart';
 import 'package:valorant_api/UI_Helper/ui_helper.dart';
 
 void main() {

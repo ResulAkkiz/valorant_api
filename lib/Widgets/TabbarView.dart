@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons.dart';
+import 'package:valorant_api/Models/weapons_model.dart';
 import 'package:valorant_api/Widgets/tabview_item.dart';
 
 class TabbarView extends StatelessWidget {

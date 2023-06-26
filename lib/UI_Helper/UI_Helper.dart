@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Agents.dart';
+import 'package:valorant_api/Models/agents_model.dart';
 
 class UIHelper {
   static Color valorantColor = const Color.fromARGB(255, 250, 68, 84);
@@ -10,7 +10,7 @@ class UIHelper {
     return category.last;
   }
 
-  static List<Color> getBackColorList(Agents agents) {
+  static List<Color> getBackColorList(Agent agents) {
     List<Color> colors = [];
     if (agents.backgroundGradientColors != null) {
       for (int i = 0; i < agents.backgroundGradientColors!.length; i++) {

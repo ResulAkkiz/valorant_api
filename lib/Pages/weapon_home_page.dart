@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons.dart';
-import 'package:valorant_api/Pages/WeaponDetailPage.dart';
+import 'package:valorant_api/Models/weapons_model.dart';
+import 'package:valorant_api/Pages/weapon_detail_page.dart';
 import 'package:valorant_api/Services/weapon_api.dart';
 import 'package:valorant_api/Widgets/weaponlist_item.dart';
 
@@ -12,11 +12,11 @@ class WeaponHomePage extends StatefulWidget {
 }
 
 class _WeaponHomePageState extends State<WeaponHomePage> {
-  late Future<List<Weapon>> FutureWeaponList;
+  late Future<List<Weapon>> weaponList;
 
   @override
   void initState() {
-    FutureWeaponList = WeaponApi.getWeaponList();
+    weaponList = WeaponApi.getWeaponList();
     super.initState();
   }
 
@@ -24,7 +24,7 @@ class _WeaponHomePageState extends State<WeaponHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: FutureWeaponList,
+        future: weaponList,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             List<Weapon> weaponList = snapshot.data;

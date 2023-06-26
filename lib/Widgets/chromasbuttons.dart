@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons.dart';
+
+import 'package:valorant_api/Models/weapons_model.dart';
 
 class ChromasButtons extends StatelessWidget {
   final List<Chroma> chromas;

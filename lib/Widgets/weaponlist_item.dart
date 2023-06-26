@@ -1,6 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons.dart';
+import 'package:valorant_api/Models/weapons_model.dart';
 import 'package:valorant_api/UI_Helper/ui_helper.dart';
 
 class WeaponListItem extends StatelessWidget {
@@ -31,10 +31,15 @@ class WeaponListItem extends StatelessWidget {
               child: (CachedNetworkImage(imageUrl: weapon.displayIcon)),
             ),
           ),
-          Text(
-            weapon.displayName,
-            style: const TextStyle(
-                fontFamily: 'ValorantFont', color: Colors.white, fontSize: 35),
+          Hero(
+            tag: weapon.displayName,
+            child: Text(
+              weapon.displayName,
+              style: const TextStyle(
+                  fontFamily: 'ValorantFont',
+                  color: Colors.white,
+                  fontSize: 35),
+            ),
           ),
           Row(
             children: [Expanded(child: Chip(label: Text(category[1])))],

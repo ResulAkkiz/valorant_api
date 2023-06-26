@@ -1,10 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons.dart';
+import 'package:valorant_api/Models/weapons_model.dart';
 import 'package:valorant_api/UI_Helper/ui_helper.dart';
+import 'package:valorant_api/Widgets/skinlist.dart';
 import 'package:valorant_api/Widgets/weaponstats_widget.dart';
-
-import 'skinlist.dart';
 
 List<Widget> getTabViewItems(Weapon weapon) {
   if (weapon.displayName != 'Melee') {

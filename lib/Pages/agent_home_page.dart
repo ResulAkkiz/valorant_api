@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Pages/AgentDetailPage.dart';
+import 'package:valorant_api/Pages/agent_detail_page.dart';
 import 'package:valorant_api/Widgets/agentlist_singleitem.dart';
 
 import '../Models/agents_model.dart';
@@ -13,10 +13,10 @@ class AgentHomePage extends StatefulWidget {
 }
 
 class _AgentHomePageState extends State<AgentHomePage> {
-  late Future<List<Agent>> FutureAgentList;
+  late Future<List<Agent>> agentList;
   @override
   void initState() {
-    FutureAgentList = AgentsApi.getAgentList();
+    agentList = AgentsApi.getAgentList();
     super.initState();
   }
 
@@ -24,7 +24,7 @@ class _AgentHomePageState extends State<AgentHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: FutureBuilder(
-        future: FutureAgentList,
+        future: agentList,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           if (snapshot.hasData) {
             List<Agent> agentList = snapshot.data;

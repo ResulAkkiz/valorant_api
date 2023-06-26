@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons.dart';
+import 'package:valorant_api/Models/weapons_model.dart';
 import 'package:valorant_api/UI_Helper/ui_helper.dart';
 
 class RangeList extends StatefulWidget {

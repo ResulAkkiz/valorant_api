@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons.dart';
+import 'package:valorant_api/Models/weapons_model.dart';
 
 class DetailPageAppTitle extends StatelessWidget {
   final Weapon weapon;
@@ -15,15 +15,12 @@ class DetailPageAppTitle extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Hero(
-              tag: weapon.uuid,
-              child: Text(
-                weapon.displayName,
-                style: const TextStyle(
-                    shadows: [Shadow(color: Colors.red, blurRadius: 15)],
-                    fontFamily: 'ValorantFont',
-                    fontSize: 50),
-              ),
+            Text(
+              weapon.displayName,
+              style: const TextStyle(
+                  shadows: [Shadow(color: Colors.red, blurRadius: 15)],
+                  fontFamily: 'ValorantFont',
+                  fontSize: 50),
             ),
             SizedBox(
                 child: Image.asset(
