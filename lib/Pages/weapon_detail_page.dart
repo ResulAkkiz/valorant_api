@@ -1,14 +1,14 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
-import 'package:valorant_api/Widgets/CustomTabbar.dart';
-import 'package:valorant_api/Widgets/DetailPageAppTitle.dart';
-import 'package:valorant_api/Widgets/TabItems.dart';
-import 'package:valorant_api/Widgets/TabbarView.dart';
+import 'package:valorant_api/Widgets/customtabbar.dart';
+import 'package:valorant_api/Widgets/detailpage_title.dart';
+import 'package:valorant_api/Widgets/tabbarview.dart';
+
+import '../Models/weapons_model.dart';
 
 class DetailPage extends StatefulWidget {
-  Weapon weapon;
-  DetailPage({Key? key, required this.weapon}) : super(key: key);
+  final Weapon weapon;
+  const DetailPage({Key? key, required this.weapon}) : super(key: key);
 
   @override
   State<DetailPage> createState() => _DetailPageState();

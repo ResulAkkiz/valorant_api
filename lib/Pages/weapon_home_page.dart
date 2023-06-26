@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
+import 'package:valorant_api/Models/weapons.dart';
 import 'package:valorant_api/Pages/WeaponDetailPage.dart';
-import 'package:valorant_api/Services/Weapon_API.dart';
-import 'package:valorant_api/Widgets/WeaponListItem.dart';
+import 'package:valorant_api/Services/weapon_api.dart';
+import 'package:valorant_api/Widgets/weaponlist_item.dart';
 
 class WeaponHomePage extends StatefulWidget {
-  WeaponHomePage({Key? key}) : super(key: key);
+  const WeaponHomePage({Key? key}) : super(key: key);
 
   @override
   State<WeaponHomePage> createState() => _WeaponHomePageState();

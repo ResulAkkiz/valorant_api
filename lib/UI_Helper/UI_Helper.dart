@@ -2,36 +2,36 @@ import 'package:flutter/material.dart';
 import 'package:valorant_api/Models/Agents.dart';
 
 class UIHelper {
-  static Color ValorantColor = const Color.fromARGB(255, 250, 68, 84);
-  static Color BackColor = const Color.fromARGB(255, 48, 48, 48);
+  static Color valorantColor = const Color.fromARGB(255, 250, 68, 84);
+  static Color backColor = const Color.fromARGB(255, 48, 48, 48);
 
-  static String GetCategory(String? Text) {
-    List<String> category = Text!.split('::');
+  static String getCategory(String? text) {
+    List<String> category = text!.split('::');
     return category.last;
   }
 
   static List<Color> getBackColorList(Agents agents) {
-    List<Color> Colors = [];
+    List<Color> colors = [];
     if (agents.backgroundGradientColors != null) {
       for (int i = 0; i < agents.backgroundGradientColors!.length; i++) {
-        Colors.add(
+        colors.add(
           Color(
             int.parse('0x${agents.backgroundGradientColors![i]}'),
           ),
         );
       }
     } else {
-      Colors = const [
+      colors = const [
         Color(0x58394dff),
         Color(0x58394dff),
         Color(0x58394dff),
         Color(0x58394dff)
       ];
     }
-    return Colors;
+    return colors;
   }
 
-  static Color GetColorByAgent(String agentName) {
+  static Color getColorByAgent(String agentName) {
     if (agentName == "Breach" ||
         agentName == "Chamber" ||
         agentName == "Killjoy") {

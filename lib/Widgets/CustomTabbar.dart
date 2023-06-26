@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
-import 'package:valorant_api/UI_Helper/UI_Helper.dart';
-import 'package:valorant_api/Widgets/TabItems.dart';
+import 'package:valorant_api/Models/weapons.dart';
+import 'package:valorant_api/UI_Helper/ui_helper.dart';
 
 class CustomTabbar extends StatelessWidget {
-  TabController tabController;
-  Weapon weapon;
-  CustomTabbar({Key? key, required this.tabController, required this.weapon})
+  final TabController tabController;
+  final Weapon weapon;
+  const CustomTabbar(
+      {Key? key, required this.tabController, required this.weapon})
       : super(key: key);
 
   @override
@@ -24,18 +24,19 @@ class CustomTabbar extends StatelessWidget {
                 offset: const Offset(0, 3),
               ),
             ],
-            border: Border.all(color: UIHelper.ValorantColor),
+            border: Border.all(color: UIHelper.valorantColor),
             borderRadius: BorderRadius.circular(10.0)),
         child: TabBar(
-          indicator: BoxDecoration(
-            color: UIHelper.ValorantColor,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          controller: tabController,
-          labelColor: UIHelper.BackColor,
-          unselectedLabelColor: UIHelper.ValorantColor,
-          tabs: GetTabList(weapon.displayName),
-        ),
+            indicator: BoxDecoration(
+              color: UIHelper.valorantColor,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            controller: tabController,
+            labelColor: UIHelper.backColor,
+            unselectedLabelColor: UIHelper.valorantColor,
+            tabs: weapon.displayName == 'Melee'
+                ? const [Tab(text: 'Skins')]
+                : const [Tab(text: 'Weapon Stats'), Tab(text: 'Skins')]),
       ),
     );
   }

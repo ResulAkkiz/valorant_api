@@ -1,12 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
-
-import 'package:valorant_api/Widgets/SkinDetailPageAppTitle.dart';
+import 'package:valorant_api/Models/weapons_model.dart';
+import 'package:valorant_api/Widgets/skindetailpage_title.dart';
 
 class SkinDetailPage extends StatefulWidget {
-  Skin skin;
-  SkinDetailPage({Key? key, required this.skin}) : super(key: key);
+  final Skin skin;
+  const SkinDetailPage({Key? key, required this.skin}) : super(key: key);
 
   @override
   State<SkinDetailPage> createState() => _SkinDetailPageState();

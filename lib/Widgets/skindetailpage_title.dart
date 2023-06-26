@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
+import 'package:valorant_api/Models/weapons.dart';
 
 class SkinDetailPageAppTitle extends StatelessWidget {
-  Skin skin;
-  SkinDetailPageAppTitle({Key? key, required this.skin}) : super(key: key);
+  final Skin skin;
+  const SkinDetailPageAppTitle({Key? key, required this.skin})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {

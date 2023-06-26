@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:valorant_api/Models/Agents.dart';
-import 'package:valorant_api/UI_Helper/UI_Helper.dart';
+import 'package:valorant_api/UI_Helper/ui_helper.dart';
 
 class AgentListItems extends StatelessWidget {
-  Agents agent;
-  AgentListItems({Key? key, required this.agent}) : super(key: key);
+  final Agents agent;
+  const AgentListItems({Key? key, required this.agent}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
+import 'package:valorant_api/Models/weapons.dart';
 
 class DetailPageAppTitle extends StatelessWidget {
-  Weapon weapon;
-  DetailPageAppTitle({Key? key, required this.weapon}) : super(key: key);
+  final Weapon weapon;
+  const DetailPageAppTitle({Key? key, required this.weapon}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class DetailPageAppTitle extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Hero(
-              tag: weapon.uuid + ' ',
+              tag: weapon.uuid,
               child: Text(
                 weapon.displayName,
                 style: const TextStyle(

@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
-import 'package:valorant_api/Widgets/TabViewItems.dart';
+import 'package:valorant_api/Models/weapons.dart';
+import 'package:valorant_api/Widgets/tabview_item.dart';
 
 class TabbarView extends StatelessWidget {
-  TabController tabController;
-  Weapon weapon;
-  TabbarView({Key? key, required this.tabController, required this.weapon})
+  final TabController tabController;
+  final Weapon weapon;
+  const TabbarView(
+      {Key? key, required this.tabController, required this.weapon})
       : super(key: key);
 
   @override
@@ -13,7 +14,7 @@ class TabbarView extends StatelessWidget {
     return TabBarView(
       controller: tabController,
       physics: const BouncingScrollPhysics(),
-      children: TabViewItems(weapon),
+      children: getTabViewItems(weapon),
     );
   }
 }

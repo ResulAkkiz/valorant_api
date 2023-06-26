@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_api/Pages/HomePage.dart';
-import 'package:valorant_api/UI_Helper/UI_Helper.dart';
+import 'package:valorant_api/UI_Helper/ui_helper.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,12 +16,12 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          scaffoldBackgroundColor: UIHelper.BackColor,
+          scaffoldBackgroundColor: UIHelper.backColor,
           chipTheme: ChipThemeData(
-            backgroundColor: UIHelper.BackColor,
+            backgroundColor: UIHelper.backColor,
             labelStyle: const TextStyle(color: Colors.white),
           ),
         ),
-        home: HomePage());
+        home: const HomePage());
   }
 }

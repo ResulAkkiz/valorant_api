@@ -1,4 +1,4 @@
-class Agents {
+class Agent {
   String? uuid;
   String? displayName;
   String? description;
@@ -12,7 +12,7 @@ class Agents {
   List<Abilities>? abilities;
   List<String>? backgroundGradientColors;
 
-  Agents(
+  Agent(
       {this.uuid,
       this.displayName,
       this.description,
@@ -26,9 +26,9 @@ class Agents {
       this.abilities,
       this.backgroundGradientColors});
 
-  factory Agents.fromJson(Map<String, dynamic> json) {
+  factory Agent.fromJson(Map<String, dynamic> json) {
     if (json['isPlayableCharacter']) {
-      return Agents(
+      return Agent(
         uuid: json['uuid'],
         displayName: json['displayName'],
         description: json['description'],
@@ -46,7 +46,7 @@ class Agents {
         ),
       );
     } else {
-      return Agents();
+      return Agent();
     }
   }
 }

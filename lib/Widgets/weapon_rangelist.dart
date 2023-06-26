@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
-import 'package:valorant_api/UI_Helper/UI_Helper.dart';
+import 'package:valorant_api/Models/weapons.dart';
+import 'package:valorant_api/UI_Helper/ui_helper.dart';
 
 class RangeList extends StatefulWidget {
-  RangeList({Key? key, required this.weapon}) : super(key: key);
+  const RangeList({Key? key, required this.weapon}) : super(key: key);
   final Weapon weapon;
 
   @override
@@ -12,9 +12,12 @@ class RangeList extends StatefulWidget {
 
 class _RangeListState extends State<RangeList> {
   var mycontroller = PageController(initialPage: 0);
-
-  late List<DamageRanges>? damageRanges =
-      widget.weapon.weaponStats?.damageRanges;
+  late List<DamageRanges>? damageRanges;
+  @override
+  void initState() {
+    damageRanges = widget.weapon.weaponStats?.damageRanges;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -26,13 +29,13 @@ class _RangeListState extends State<RangeList> {
             decoration: BoxDecoration(
                 boxShadow: [
                   BoxShadow(
-                    color: Color.fromARGB(255, 26, 7, 7).withOpacity(0.8),
+                    color: const Color.fromARGB(255, 26, 7, 7).withOpacity(0.8),
                     spreadRadius: 5,
                     blurRadius: 15,
                     offset: const Offset(0, 3), // changes position of shadow
                   ),
                 ],
-                border: Border.all(color: UIHelper.ValorantColor),
+                border: Border.all(color: UIHelper.valorantColor),
                 borderRadius: BorderRadius.circular(10.0)),
             child: Padding(
               padding: const EdgeInsets.all(8.0),

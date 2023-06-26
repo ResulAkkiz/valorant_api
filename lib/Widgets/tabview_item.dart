@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
-import 'package:valorant_api/UI_Helper/UI_Helper.dart';
-import 'package:valorant_api/Widgets/WeaponStatsWidget.dart';
+import 'package:valorant_api/Models/weapons.dart';
+import 'package:valorant_api/UI_Helper/ui_helper.dart';
+import 'package:valorant_api/Widgets/weaponstats_widget.dart';
 
-import 'SkinList.dart';
+import 'skinlist.dart';
 
-List<Widget> TabViewItems(Weapon weapon) {
+List<Widget> getTabViewItems(Weapon weapon) {
   if (weapon.displayName != 'Melee') {
     return [
       WeaponStatsWidget(
@@ -17,7 +17,7 @@ List<Widget> TabViewItems(Weapon weapon) {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: UIHelper.ValorantColor,
+            color: UIHelper.valorantColor,
           ),
           child: Center(
               child: SkinList(
@@ -33,7 +33,7 @@ List<Widget> TabViewItems(Weapon weapon) {
         child: Container(
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
-            color: UIHelper.ValorantColor,
+            color: UIHelper.valorantColor,
           ),
           child: Center(
               child: SkinList(

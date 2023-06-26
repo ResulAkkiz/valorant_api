@@ -1,12 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
 
 class WeaponStatsImageItem extends StatelessWidget {
-  String weaponStatsTitle;
-  String weaponStatsImage;
-  WeaponStatsImageItem(
+  final String weaponStatsTitle;
+  final String weaponStatsImage;
+  const WeaponStatsImageItem(
       {Key? key,
       required this.weaponStatsTitle,
       required this.weaponStatsImage})

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:valorant_api/Pages/AgentHomePage.dart';
 import 'package:valorant_api/Pages/WeaponHomePage.dart';
-import 'package:valorant_api/UI_Helper/UI_Helper.dart';
+import 'package:valorant_api/UI_Helper/ui_helper.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -15,14 +15,14 @@ class _HomePageState extends State<HomePage> {
   static const TextStyle optionStyle =
       TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
   static final List<Widget> _widgetOptions = <Widget>[
-    AgentHomePage(),
-    WeaponHomePage()
+    const AgentHomePage(),
+    const WeaponHomePage()
   ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: UIHelper.ValorantColor,
+          backgroundColor: UIHelper.valorantColor,
           items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
               icon: SizedBox(

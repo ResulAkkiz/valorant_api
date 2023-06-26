@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
-import 'package:valorant_api/UI_Helper/UI_Helper.dart';
+import 'package:valorant_api/Models/weapons.dart';
+import 'package:valorant_api/UI_Helper/ui_helper.dart';
 
 class WeaponListItem extends StatelessWidget {
-  Weapon weapon;
+  final Weapon weapon;
   late List<String> category = weapon.category.split('::');
   WeaponListItem({Key? key, required this.weapon}) : super(key: key);
   @override
@@ -15,11 +15,11 @@ class WeaponListItem extends StatelessWidget {
               // begin: Alignment.topLeft,
               // end: Alignment.bottomRight,
               colors: [
-            UIHelper.BackColor,
-            UIHelper.ValorantColor,
-            UIHelper.BackColor
+            UIHelper.backColor,
+            UIHelper.valorantColor,
+            UIHelper.backColor
           ])),
-      margin: EdgeInsets.all(12),
+      margin: const EdgeInsets.all(12),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -37,7 +37,7 @@ class WeaponListItem extends StatelessWidget {
                 fontFamily: 'ValorantFont', color: Colors.white, fontSize: 35),
           ),
           Row(
-            children: [Expanded(child: Chip(label: Text('${category[1]}')))],
+            children: [Expanded(child: Chip(label: Text(category[1])))],
           )
         ],
       ),

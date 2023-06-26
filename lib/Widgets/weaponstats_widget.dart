@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
-import 'package:valorant_api/UI_Helper/UI_Helper.dart';
-import 'package:valorant_api/Widgets/RangeList.dart';
-import 'package:valorant_api/Widgets/WeaponStatsImageItem.dart';
-import 'package:valorant_api/Widgets/WeaponStatsItem.dart';
+import 'package:valorant_api/Models/weapons_model.dart';
+import 'package:valorant_api/UI_Helper/ui_helper.dart';
+import 'package:valorant_api/Widgets/weapon_rangelist.dart';
+import 'package:valorant_api/Widgets/weaponstats_item.dart';
+import 'package:valorant_api/Widgets/weaponstatsimage_item.dart';
 
 class WeaponStatsWidget extends StatelessWidget {
-  Weapon weapon;
-  WeaponStatsWidget({Key? key, required this.weapon}) : super(key: key);
+  final Weapon weapon;
+  const WeaponStatsWidget({Key? key, required this.weapon}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class WeaponStatsWidget extends StatelessWidget {
         padding: const EdgeInsets.all(15.0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          color: UIHelper.ValorantColor,
+          color: UIHelper.valorantColor,
         ),
         child: Column(
           children: [
@@ -32,11 +32,11 @@ class WeaponStatsWidget extends StatelessWidget {
                   ),
                   WeaponStatsItem(
                     weaponStatsTitle: 'CATEGORY',
-                    weaponStatsValue: UIHelper.GetCategory(weapon.category),
+                    weaponStatsValue: UIHelper.getCategory(weapon.category),
                   ),
                   WeaponStatsItem(
                     weaponStatsTitle: 'WALL DAMAGE',
-                    weaponStatsValue: UIHelper.GetCategory(
+                    weaponStatsValue: UIHelper.getCategory(
                         weapon.weaponStats!.wallPenetration),
                   ),
                 ],

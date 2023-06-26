@@ -1,17 +1,18 @@
 import 'dart:convert';
+
 import 'package:dio/dio.dart';
-import 'package:valorant_api/Models/Weapons.dart';
+import 'package:valorant_api/Models/weapons_model.dart';
 
 class WeaponApi {
   static const String _url = 'https://valorant-api.com/v1/weapons';
   static Future<List<Weapon>> getWeaponList() async {
-    List<Weapon> WeaponList = [];
+    List<Weapon> weaponList = [];
     Response result = await Dio().get(_url);
-    var EncodeString = jsonEncode(result.data['data']);
-    var DecodingList = jsonDecode(EncodeString);
-    if (DecodingList is List) {
-      WeaponList = DecodingList.map((e) => Weapon.fromJson(e)).toList();
+    var encodeString = jsonEncode(result.data['data']);
+    var decodingList = jsonDecode(encodeString);
+    if (decodingList is List) {
+      weaponList = decodingList.map((e) => Weapon.fromJson(e)).toList();
     }
-    return WeaponList;
+    return weaponList;
   }
 }

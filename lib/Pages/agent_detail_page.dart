@@ -1,15 +1,14 @@
-import 'dart:ui';
-
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Agents.dart';
-import 'package:valorant_api/UI_Helper/UI_Helper.dart';
-import 'package:valorant_api/Widgets/AgentAbilitiesPageView.dart';
+import 'package:valorant_api/UI_Helper/ui_helper.dart';
+import 'package:valorant_api/Widgets/agentabilities_pageview.dart';
+
+import '../Models/agents_model.dart';
 
 class AgentDetailPage extends StatefulWidget {
-  Agents agent;
+  final Agent agent;
 
-  AgentDetailPage({Key? key, required this.agent}) : super(key: key);
+  const AgentDetailPage({Key? key, required this.agent}) : super(key: key);
 
   @override
   State<AgentDetailPage> createState() => _AgentDetailPageState();
@@ -34,14 +33,15 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                     width: MediaQuery.of(context).size.width,
                     imageUrl: widget.agent.fullPortrait.toString(),
                     placeholder: (context, url) => Center(
-                        child: Container(
+                        child: SizedBox(
                             width: 150,
                             height: 250,
                             child: CircularProgressIndicator(
-                              color: UIHelper.GetColorByAgent(
+                              color: UIHelper.getColorByAgent(
                                   widget.agent.displayName.toString()),
                             ))),
-                    errorWidget: (context, url, error) => Icon(Icons.error),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                   Text(
                     widget.agent.displayName.toString(),
@@ -79,13 +79,13 @@ class _AgentDetailPageState extends State<AgentDetailPage> {
                 decoration: BoxDecoration(
                   boxShadow: [
                     BoxShadow(
-                        color: UIHelper.GetColorByAgent(
+                        color: UIHelper.getColorByAgent(
                             widget.agent.displayName.toString()),
                         spreadRadius: 2,
                         blurRadius: 2,
-                        offset: Offset(4, 8)),
+                        offset: const Offset(4, 8)),
                     BoxShadow(
-                      color: UIHelper.BackColor,
+                      color: UIHelper.backColor,
                       spreadRadius: 0,
                       blurRadius: 0,
                     ),

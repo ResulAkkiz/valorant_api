@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Agents.dart';
+import 'package:valorant_api/Models/agents_model.dart';
 
 class AbilitiesPageView extends StatefulWidget {
-  final Agents agent;
+  final Agent agent;
   final PageController controller;
   final void Function(int) onPageChanged;
   const AbilitiesPageView({

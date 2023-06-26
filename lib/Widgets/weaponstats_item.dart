@@ -1,12 +1,9 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/Weapons.dart';
 
 class WeaponStatsItem extends StatelessWidget {
-  String weaponStatsTitle;
-  String weaponStatsValue;
-  WeaponStatsItem(
+  final String weaponStatsTitle;
+  final String weaponStatsValue;
+  const WeaponStatsItem(
       {Key? key,
       required this.weaponStatsTitle,
       required this.weaponStatsValue})

@@ -20,7 +20,7 @@ class Weapon {
 
   factory Weapon.fromJson(Map<String, dynamic> json) {
     return Weapon(
-      uuid: json["uuid"],
+      uuid: json["uuid"].toString().trim(),
       displayName: json["displayName"],
       category: json["category"],
       displayIcon: json["displayIcon"],
@@ -154,10 +154,9 @@ class Skin {
         uuid: json["uuid"],
         displayName: json["displayName"],
         themeUuid: json["themeUuid"],
-        contentTierUuid:
-            json["contentTierUuid"] == null ? null : json["contentTierUuid"],
-        displayIcon: json["displayIcon"] == null ? null : json["displayIcon"],
-        wallpaper: json["wallpaper"] ?? null,
+        contentTierUuid: json["contentTierUuid"],
+        displayIcon: json["displayIcon"],
+        wallpaper: json["wallpaper"],
         assetPath: json["assetPath"],
         chromas: json["chromas"] != null
             ? List<Chroma>.from(json["chromas"].map((x) => Chroma.fromJson(x)))
@@ -171,8 +170,8 @@ class Skin {
         "uuid": uuid,
         "displayName": displayName,
         "themeUuid": themeUuid,
-        "contentTierUuid": contentTierUuid == null ? null : contentTierUuid,
-        "displayIcon": displayIcon == null ? null : displayIcon,
+        "contentTierUuid": contentTierUuid,
+        "displayIcon": displayIcon,
         "wallpaper": wallpaper,
         "assetPath": assetPath,
         "chromas": List<dynamic>.from(chromas!.map((x) => x.toJson())),
@@ -202,9 +201,9 @@ class Chroma {
   factory Chroma.fromJson(Map<String, dynamic> json) => Chroma(
         uuid: json["uuid"],
         displayName: json["displayName"],
-        displayIcon: json["displayIcon"] == null ? null : json["displayIcon"],
+        displayIcon: json["displayIcon"],
         fullRender: json["fullRender"],
-        swatch: json["swatch"] == null ? null : json["swatch"],
+        swatch: json["swatch"],
         streamedVideo: json["streamedVideo"],
         assetPath: json["assetPath"],
       );
@@ -212,9 +211,9 @@ class Chroma {
   Map<String, dynamic> toJson() => {
         "uuid": uuid,
         "displayName": displayName,
-        "displayIcon": displayIcon == null ? null : displayIcon,
+        "displayIcon": displayIcon,
         "fullRender": fullRender,
-        "swatch": swatch == null ? null : swatch,
+        "swatch": swatch,
         "streamedVideo": streamedVideo,
         "assetPath": assetPath,
       };
@@ -240,19 +239,18 @@ class Level {
   factory Level.fromJson(Map<String, dynamic> json) => Level(
         uuid: json["uuid"],
         displayName: json["displayName"],
-        levelItem: json["levelItem"] == null ? null : json["levelItem"],
-        displayIcon: json["displayIcon"] == null ? null : json["displayIcon"],
-        streamedVideo:
-            json["streamedVideo"] == null ? null : json["streamedVideo"],
+        levelItem: json["levelItem"],
+        displayIcon: json["displayIcon"],
+        streamedVideo: json["streamedVideo"],
         assetPath: json["assetPath"],
       );
 
   Map<String, dynamic> toJson() => {
         "uuid": uuid,
         "displayName": displayName,
-        "levelItem": levelItem == null ? null : levelItem,
-        "displayIcon": displayIcon == null ? null : displayIcon,
-        "streamedVideo": streamedVideo == null ? null : streamedVideo,
+        "levelItem": levelItem,
+        "displayIcon": displayIcon,
+        "streamedVideo": streamedVideo,
         "assetPath": assetPath,
       };
 }
