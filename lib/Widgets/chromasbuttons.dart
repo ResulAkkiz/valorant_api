@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import 'package:valorant_api/Models/weapons_model.dart';
+import 'package:valorant_api/model/weapons_model.dart';
 
 class ChromasButtons extends StatelessWidget {
   final List<Chroma> chromas;
@@ -11,15 +10,11 @@ class ChromasButtons extends StatelessWidget {
       scrollDirection: Axis.horizontal,
       itemCount: chromas.length,
       itemBuilder: (BuildContext context, int index) {
-        return SizedBox(
-          width: 50,
-          height: 50,
-          child: IconButton(
-              onPressed: () {},
-              icon: chromas[index].swatch != null
-                  ? Image.network(chromas[index].swatch.toString())
-                  : const SizedBox()),
-        );
+        return IconButton(
+            onPressed: () {},
+            icon: chromas[index].swatch != null
+                ? Image.network(chromas[index].swatch.toString())
+                : const SizedBox());
       },
     );
   }

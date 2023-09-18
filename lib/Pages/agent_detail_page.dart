@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:valorant_api/UI_Helper/ui_helper.dart';
 import 'package:valorant_api/Widgets/agentabilities_pageview.dart';
 
-import '../Models/agents_model.dart';
+import '../model/agents_model.dart';
 
 class AgentDetailPage extends StatefulWidget {
   final Agent agent;

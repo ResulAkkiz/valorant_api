@@ -1,44 +1,62 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons_model.dart';
 import 'package:valorant_api/UI_Helper/ui_helper.dart';
+import 'package:valorant_api/model/weapons_model.dart';
 
-class WeaponListItem extends StatelessWidget {
+class WeaponListItem extends StatefulWidget {
   final Weapon weapon;
-  late List<String> category = weapon.category.split('::');
-  WeaponListItem({Key? key, required this.weapon}) : super(key: key);
+
+  const WeaponListItem({Key? key, required this.weapon}) : super(key: key);
+
+  @override
+  State<WeaponListItem> createState() => _WeaponListItemState();
+}
+
+class _WeaponListItemState extends State<WeaponListItem> {
+  late List<String> category;
+
+  @override
+  void initState() {
+    category = widget.weapon.category.split('::');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(15.0),
           gradient: LinearGradient(
-              // begin: Alignment.topLeft,
-              // end: Alignment.bottomRight,
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
               colors: [
-            UIHelper.backColor,
-            UIHelper.valorantColor,
-            UIHelper.backColor
-          ])),
+                UIHelper.backColor,
+                UIHelper.valorantColor,
+                UIHelper.backColor
+              ])),
       margin: const EdgeInsets.all(12),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Hero(
-            tag: weapon.uuid,
-            child: SizedBox(
-              width: 350,
-              height: 175,
-              child: (CachedNetworkImage(imageUrl: weapon.displayIcon)),
-            ),
+            tag: widget.weapon.uuid,
+            child: AspectRatio(
+                aspectRatio: 2.5,
+                child: (CachedNetworkImage(
+                  imageUrl: widget.weapon.displayIcon,
+                ))),
           ),
-          Hero(
-            tag: weapon.displayName,
-            child: Text(
-              weapon.displayName,
-              style: const TextStyle(
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            width: MediaQuery.sizeOf(context).width * 0.2,
+            child: FittedBox(
+              child: Text(
+                widget.weapon.displayName,
+                style: const TextStyle(
                   fontFamily: 'ValorantFont',
                   color: Colors.white,
-                  fontSize: 35),
+                ),
+              ),
             ),
           ),
           Row(

@@ -1,8 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/agents_model.dart';
-
 import 'package:valorant_api/UI_Helper/ui_helper.dart';
+import 'package:valorant_api/model/agents_model.dart';
 
 class AgentListItems extends StatelessWidget {
   final Agent agent;

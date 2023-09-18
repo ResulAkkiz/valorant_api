@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons_model.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:valorant_api/Pages/weapon_detail_page.dart';
-import 'package:valorant_api/Services/weapon_api.dart';
 import 'package:valorant_api/Widgets/weaponlist_item.dart';
+import 'package:valorant_api/bloc/weapon_bloc/bloc/weapon_bloc.dart';
+import 'package:valorant_api/model/weapons_model.dart';
 
 class WeaponHomePage extends StatefulWidget {
   const WeaponHomePage({Key? key}) : super(key: key);
@@ -12,50 +13,52 @@ class WeaponHomePage extends StatefulWidget {
 }
 
 class _WeaponHomePageState extends State<WeaponHomePage> {
-  late Future<List<Weapon>> weaponList;
-
   @override
   void initState() {
-    weaponList = WeaponApi.getWeaponList();
+    context.read<WeaponBloc>().add(FetchWeapon());
+    print("initState");
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: FutureBuilder(
-        future: weaponList,
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            List<Weapon> weaponList = snapshot.data;
-            return ListView.builder(
-              itemCount: weaponList.length,
-              itemBuilder: (context, index) {
-                return InkWell(
-                  onTap: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) =>
-                            DetailPage(weapon: weaponList[index]),
-                      ),
-                    );
-                  },
-                  child: WeaponListItem(
-                    weapon: weaponList[index],
-                  ),
-                );
-              },
-            );
-          } else if (snapshot.hasError) {
-            return Center(child: Text(snapshot.error.toString()));
-          } else {
-            return const Center(
-              child: CircularProgressIndicator(),
-            );
-          }
-        },
-      ),
-    );
+    return Scaffold(body: BlocBuilder<WeaponBloc, WeaponState>(
+      builder: (context, state) {
+        print(state.toString());
+        if (state is WeaponSuccessful) {
+          return GridView.builder(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+            itemCount: state.weaponList.length,
+            itemBuilder: (BuildContext context, int index) {
+              Weapon currentWeapon = state.weaponList[index];
+              return InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          WeaponDetailPage(weapon: currentWeapon),
+                    ),
+                  );
+                },
+                child: WeaponListItem(
+                  weapon: currentWeapon,
+                ),
+              );
+            },
+          );
+        } else if (state is WeaponError) {
+          return Center(
+            child: Text(state.message),
+          );
+        } else {
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    ));
   }
 }

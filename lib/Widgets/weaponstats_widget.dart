@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons_model.dart';
 import 'package:valorant_api/UI_Helper/ui_helper.dart';
 import 'package:valorant_api/Widgets/weapon_rangelist.dart';
 import 'package:valorant_api/Widgets/weaponstats_item.dart';
 import 'package:valorant_api/Widgets/weaponstatsimage_item.dart';
+import 'package:valorant_api/model/weapons_model.dart';
 
 class WeaponStatsWidget extends StatelessWidget {
   final Weapon weapon;

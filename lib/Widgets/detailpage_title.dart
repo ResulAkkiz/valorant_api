@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons_model.dart';
+import 'package:valorant_api/model/weapons_model.dart';
 
 class DetailPageAppTitle extends StatelessWidget {
   final Weapon weapon;
@@ -24,7 +24,7 @@ class DetailPageAppTitle extends StatelessWidget {
             ),
             SizedBox(
                 child: Image.asset(
-              'assets/images/ValorantLogo.png',
+              'assets/images/valorant.png',
               fit: BoxFit.contain,
             ))
           ],

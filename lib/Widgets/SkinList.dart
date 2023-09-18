@@ -1,8 +1,8 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons_model.dart';
 import 'package:valorant_api/Pages/skin_detail_page.dart';
 import 'package:valorant_api/UI_Helper/ui_helper.dart';
+import 'package:valorant_api/model/weapons_model.dart';
 
 class SkinList extends StatelessWidget {
   final Weapon weapon;
@@ -15,9 +15,12 @@ class SkinList extends StatelessWidget {
       itemBuilder: (context, index) {
         return InkWell(
           onTap: () {
-            Navigator.of(context).push(MaterialPageRoute(
+            Navigator.of(context).push(
+              MaterialPageRoute(
                 builder: (context) =>
-                    SkinDetailPage(skin: weapon.skins![index])));
+                    SkinDetailPage(skin: weapon.skins![index]),
+              ),
+            );
           },
           child: Padding(
             padding: const EdgeInsets.all(8.0),

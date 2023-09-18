@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-
-import 'package:valorant_api/Models/weapons_model.dart';
+import 'package:valorant_api/UI_Helper/UI_Helper.dart';
+import 'package:valorant_api/model/weapons_model.dart';
 
 class SkinDetailPageAppTitle extends StatelessWidget {
   final Skin skin;
@@ -9,34 +9,24 @@ class SkinDetailPageAppTitle extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return Container(
       padding: const EdgeInsets.all(8.0),
-      child: SizedBox(
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height / 8,
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Expanded(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                alignment: Alignment.topCenter,
-                child: Text(
-                  skin.displayName,
-                  maxLines: 1,
-                  style: const TextStyle(
-                      shadows: [
-                        Shadow(
-                            color: Color.fromARGB(255, 129, 104, 103),
-                            blurRadius: 15)
-                      ],
-                      fontFamily: 'ValorantFont',
-                      color: Colors.red,
-                      fontSize: 30),
-                ),
-              ),
-            ),
-          ],
+      decoration: ShapeDecoration(
+        shadows: const [
+          BoxShadow(color: Colors.black12, blurRadius: 15, spreadRadius: 0)
+        ],
+        shape: OutlineInputBorder(
+            borderSide: BorderSide(color: UIHelper.valorantColor, width: 1.5),
+            borderRadius: const BorderRadius.all(Radius.circular(15.0))),
+      ),
+      child: FittedBox(
+        child: Text(
+          skin.displayName,
+          style: const TextStyle(
+              shadows: [Shadow(color: Colors.white38, blurRadius: 15)],
+              fontFamily: 'ValorantFont',
+              color: Colors.red,
+              fontSize: 25),
         ),
       ),
     );

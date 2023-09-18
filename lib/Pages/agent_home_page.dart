@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:valorant_api/Pages/agent_detail_page.dart';
 import 'package:valorant_api/Widgets/agentlist_singleitem.dart';
+import 'package:valorant_api/bloc/agent_bloc/bloc/agent_bloc.dart';
 
-import '../Models/agents_model.dart';
-import '../Services/agents_api.dart';
+import '../model/agents_model.dart';
 
 class AgentHomePage extends StatefulWidget {
   const AgentHomePage({Key? key}) : super(key: key);
@@ -13,48 +14,49 @@ class AgentHomePage extends StatefulWidget {
 }
 
 class _AgentHomePageState extends State<AgentHomePage> {
-  late Future<List<Agent>> agentList;
   @override
   void initState() {
-    agentList = AgentsApi.getAgentList();
+    context.read<AgentBloc>().add(FetchAgent());
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder(
-        future: agentList,
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
-          if (snapshot.hasData) {
-            List<Agent> agentList = snapshot.data;
-            agentList.removeWhere((agent) => agent.isPlayableCharacter == null);
+      body: BlocBuilder<AgentBloc, AgentState>(
+        builder: (context, state) {
+          if (state is AgentSuccessful) {
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
               ),
-              itemCount: agentList.length,
+              itemCount: state.agentList.length,
               itemBuilder: (BuildContext context, int index) {
+                Agent currentAgent = state.agentList[index];
                 return InkWell(
                   onTap: () {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) =>
-                            AgentDetailPage(agent: agentList[index]),
+                            AgentDetailPage(agent: currentAgent),
                       ),
                     );
                   },
                   child: AgentListItems(
-                    agent: agentList[index],
+                    agent: currentAgent,
                   ),
                 );
               },
             );
-          } else if (snapshot.hasError) {
-            return Text(snapshot.error.toString());
+          } else if (state is AgentError) {
+            return Center(
+              child: Text(state.message),
+            );
           } else {
-            return const Center(child: CircularProgressIndicator());
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           }
         },
       ),

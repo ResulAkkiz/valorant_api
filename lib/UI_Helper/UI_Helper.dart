@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/agents_model.dart';
+import 'package:valorant_api/model/agents_model.dart';
 
 class UIHelper {
   static Color valorantColor = const Color.fromARGB(255, 250, 68, 84);

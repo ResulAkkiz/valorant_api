@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:valorant_api/Models/weapons_model.dart';
 import 'package:valorant_api/UI_Helper/ui_helper.dart';
+import 'package:valorant_api/model/weapons_model.dart';
 
 class RangeList extends StatefulWidget {
   const RangeList({Key? key, required this.weapon}) : super(key: key);
@@ -62,7 +62,7 @@ class _RangeListState extends State<RangeList> {
                       children: [
                         Expanded(
                           child: Image.asset(
-                            'assets/images/Person.png',
+                            'assets/images/person.png',
                             fit: BoxFit.contain,
                           ),
                         ),
